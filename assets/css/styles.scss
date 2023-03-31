@@ -1,0 +1,149 @@
+$shadow: "rgba(110, 110, 110, 0.064) 0px 3px 6px, rgba(123, 120, 120, 0.027) 0px 3px 6px";
+$screen: "max-width: 1000px";
+
+@mixin center($align, $justify){
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@font-face {
+    font-family: font_1;
+    src: url('../css/font/Outfit-Regular.ttf');
+    font-weight: 300;
+    font-size: 18px;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: font_1;
+}
+
+body{
+    max-width: 1200px;
+    min-width: 750px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: hsl(36, 100%, 99%);
+    @include center(center, center);
+
+    @media ($screen) {
+        @include center(center, start);
+    }
+}
+
+.container{
+    width: 50%;
+    height: 100%;
+    background-color: hsl(233, 8%, 79%);
+    padding: 4%;
+    border-radius: 12px;
+    margin: 0 auto;
+    @include center(center, space-between);
+    flex-wrap: wrap;
+    gap: 20px;
+
+    @media ($screen) {
+        margin: 0 50px;
+    }
+}
+
+header{
+    width: 100%;
+    
+    input{
+        background-color: transparent;
+        border: 0;
+        width: 100%;
+        text-align: end;
+        padding: 4% 0;
+        font-size: 50px;
+        color: hsl(36, 100%, 99%);
+        text-shadow: $shadow;
+
+        &:focus{
+            outline: none;
+        }
+    }
+}
+
+main{
+    height: 100%;
+    @extend header;
+    @include center(center, space-between);
+    flex-wrap: wrap;
+}
+
+.main__element{
+    @include center(center, start);
+    gap: 8px;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 1.5% 0;
+}
+
+.main__element:nth-child(2){
+    width: 75%;
+    button{
+        width: 30%;
+    }
+}
+
+.main__element:nth-child(3){
+    width: 24%;
+    button{
+        width: 100%;
+    }
+}
+
+.is-extra-elements button:last-of-type{
+    background-color: hsl(5, 85%, 63%);
+    color: hsl(36, 100%, 99%);
+    &:hover{
+        background-color: hsl(5, 89%, 73%);
+    }
+}
+
+footer{
+    width: 100%;
+    @include center(center, space-between);
+    button{
+        width: 23%;
+        margin: 0;
+        background-color: hsl(35, 77%, 62%);
+
+        &:nth-child(2){
+            width: 74%;
+            background-color: hsl(218, 77%, 48%);
+            color: hsl(36, 100%, 99%);
+            font-size: .8cm;
+                
+            &:hover{
+                background-color: hsl(217, 97%, 28%);
+            }
+        }
+
+        &:hover{
+            background-color: hsl(35, 100%, 50%);
+        }
+    }
+}
+     
+button{
+    margin: 0 auto;
+    background-color: hsl(36, 100%, 99%);
+    border: 0;
+    width: 23%;
+    height: 45px;
+    border-radius: 6px;
+    border: .3px solid hsla(0, 1%, 59%, 0.015);
+    cursor: pointer;
+    transition: .2s ease-in;
+    font-size: 120%;
+    overflow: hidden;
+    &:hover{
+        background-color: hsl(0, 10%, 55%);
+    }
+}
