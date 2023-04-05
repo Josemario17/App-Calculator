@@ -14,23 +14,17 @@ let listBtnToAddNmbers = buttonsToAddNumbers.length, listBtnToAddOperacional = b
  verification_1 = (listBtnToAddNmbers && listBtnToAddOperacional) > 0, 
  btnEspecialFunction = 9, elements;
 
-const allOperacionalChars = ["+", "-", "*", "/", "%"]
 
 if(verification_1){
     for(elements = 0; elements < listBtnToAddNmbers; elements++){
-
         if(elements != btnEspecialFunction)
         {
-            buttonsToAddNumbers[elements].onclick = (e) =>{
-                AddCharsInInput(e.target)
-            } 
+            buttonsToAddNumbers[elements].onclick = (e) => AddCharsInInput(e.target)
+            
          }
 
        else{
-        buttonsToAddNumbers[elements].onclick = () =>{
-            input.value = "-" + input.value
-          }
-
+            buttonsToAddNumbers[elements].onclick = () => input.value = "-" + input.value
        }
     }
 
@@ -45,16 +39,18 @@ if(verification_1){
 }
 
 
-btnClearAll.onclick = () =>{
-    input.value = "0"
-}
 
 btnClearLast.onclick = () =>{
     let newInputValue = Array.from(input.value)
     elements = newInputValue.length
     input.value = ""
-    for(let interations = 0; interations < elements - 1; interations++){
-        input.value += newInputValue[interations];
+    if(elements > 1){
+        for(let interations = 0; interations < elements - 1; interations++){
+            input.value += newInputValue[interations];
+        }
+    }
+    else{
+        input.value = "0"
     }
 }
 btnClearSect.onclick = () =>{
@@ -62,9 +58,15 @@ btnClearSect.onclick = () =>{
     let allComposition = String.split(/\b/)
     let lastItem = allComposition.length - 1
     input.value = ""
-    for(let interations = 0; interations < lastItem; interations++)
-    {
-        input.value += allComposition[interations]
+    if(lastItem > 0){
+        for(let interations = 0; interations < lastItem; interations++)
+        {
+            input.value += allComposition[interations]
+        }
+    }
+
+    else{
+        input.value = "0"
     }
 }
 
@@ -77,9 +79,9 @@ btnPercent.onclick = () =>{
     }
 }
 
-btnResult.onclick = () =>{
-    FinalResult()
-}
+btnClearAll.onclick = () => input.value = "0"
+
+btnResult.onclick = () => FinalResult()
 
 
 let AddCharsInInput = (element) => {
