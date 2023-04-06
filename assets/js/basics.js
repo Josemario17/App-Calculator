@@ -10,6 +10,8 @@ btnPercent = document.querySelector("#percent");
 const btnHistory = document.querySelector("footer button"),
 btnResult = document.querySelector("footer button:nth-child(2)");
 
+const theInputToCheck = document.querySelector("#t-check")
+
 let listBtnToAddNmbers = buttonsToAddNumbers.length, listBtnToAddOperacional = buttonsToAddOperacional.length,
  verification_1 = (listBtnToAddNmbers && listBtnToAddOperacional) > 0, 
  btnEspecialFunction = 9, elements;
@@ -81,6 +83,8 @@ btnPercent.onclick = () =>{
 
 btnClearAll.onclick = () => input.value = "0"
 
+btnHistory.onclick = () => theInputToCheck.checked = true
+
 btnResult.onclick = () => FinalResult()
 
 
@@ -91,8 +95,13 @@ let AddCharsInInput = (element) => {
 }
 
 let FinalResult = () =>{
+    insertTextInHistory(input.value)
     let result = eval(input.value)
     input.value = result
+}
+
+function insertTextInHistory(content){
+    document.querySelector(".historySection__element--allH").textContent += "\t\t" + content + "\t\t|"
 }
 
 let exceptionsError = () =>{

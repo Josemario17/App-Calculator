@@ -20,6 +20,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 @media (max-width: 1000px) {
   body {
@@ -144,4 +145,62 @@ button {
 }
 button:hover {
   background-color: hsl(0, 10%, 55%);
+}
+
+div.historySection {
+  width: 50%;
+  height: 70%;
+  position: absolute;
+  margin: 0 auto;
+  top: 15%;
+  background-color: rgb(219, 202, 202);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+  display: none;
+}
+div.historySection div.historySection__element {
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(42, 55, 67);
+  text-shadow: "rgba(110, 110, 110, 0.064) 0px 3px 6px, rgba(123, 120, 120, 0.027) 0px 3px 6px";
+}
+div.historySection div.historySection__element .historySection__element--allH {
+  width: 60%;
+  line-height: 25px;
+  height: 100%;
+}
+@media (max-width: 1000px) {
+  div.historySection {
+    margin-left: 50px;
+  }
+}
+
+label {
+  position: absolute;
+  width: 65px;
+  height: 45px;
+  background-color: hsl(5, 85%, 63%);
+  top: 100px;
+  z-index: 50;
+  right: 300px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: aliceblue;
+  font-size: larger;
+  display: none;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox]:checked ~ :is(div.historySection, label) {
+  display: flex;
 }/*# sourceMappingURL=styles.css.map */

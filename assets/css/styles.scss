@@ -28,7 +28,7 @@ body{
     margin: 0 auto;
     background-color: hsl(36, 100%, 99%);
     @include center(center, center);
-
+    position: relative;
     @media ($screen) {
         @include center(center, start);
     }
@@ -147,4 +147,54 @@ button{
     &:hover{
         background-color: hsl(0, 10%, 55%);
     }
+}
+
+div.historySection{
+    width: 50%;
+    height: 70%;
+    position: absolute;
+    margin: 0 auto;
+    top: 15%;
+    background-color: rgb(219, 202, 202);
+    @include center(center, center);
+    overflow-y: scroll;
+    display: none;
+    div.historySection__element{
+        min-height: 500px;
+        @include center(center, center);
+        color: rgb(42, 55, 67);
+        text-shadow: $shadow;
+        .historySection__element--allH{
+            width: 60%;
+            line-height: 25px;
+            height: 100%;
+        }
+    }
+
+    @media ($screen) {
+        margin-left: 50px;
+    }
+}
+
+label{
+    position: absolute;
+    width: 65px;
+    height: 45px;
+    background-color: hsl(5, 85%, 63%);
+    top: 100px;
+    z-index: 50;
+    right: 300px;
+    border-radius: 15px;
+    @include center(center, center);
+    cursor: pointer;
+    color: aliceblue;
+    font-size: larger;
+    display: none;
+}
+input[type="checkbox"]{
+    display: none;
+}
+
+input[type="checkbox"]:checked ~ :is( div.historySection, label) {
+    display: flex;
 }
